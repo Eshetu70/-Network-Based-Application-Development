@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
+
+body {
+    background-color: gainsboro;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-family: 'Playfair Display', serif;
+}
+
+header {
+    background-color: #0d6743;
+}
+hr {
+    height: 3px;
+    border-color: rgb(175, 175, 26);
+    background-color: rgb(169, 169, 32);
+}
+
+.logo {
+
+    width: 250px;
+    height: 125px;
+}
+a .logo{
+    float: left;
+}
+.bar {
+    list-style: none;
+    display: flex;
+}
+
+ul li a {
+    text-decoration: none;
+    justify-content: space-between;
+    padding: 0 0.8em;
+    color: aliceblue;
+}
+
+#logo  {
+    padding-top: 15px;
+    margin-right: 30px;
+    margin-right: auto;
+}
+
+ul li {
+    padding-top: 70px;
+    margin-right: 30px;
+}
+
+nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    justify-content: space-between;
+    padding: 0 0.8em;
+    color: aliceblue;
+}
+
+main {
+    margin-left: 150px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+footer nav {
+    background-color: #0d6743;
+    padding: 16px 20px;
+    color: aliceblue;
+
+}
+
+.event li a {
+
+    color: black;
+    padding-left: 0px;
+    text-decoration: none;
+
+}
+
+.event {
+    list-style: none;
+
+}
+
+.event li {
+    line-height: 2em;
+
+}
+
+.fa-facebook {
+    background-color: #3B5998;
+    font-size: 22px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 22px;
+    float: right;
+    color: white;
+    margin-right: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+
+}
+.fa-linkedin {
+    float: right;
+    width: 10px;
+    height: 22px;
+    border-radius: 50%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    background: #007bb5;
+    ;
+    color: white;
+}
+
+.material-symbols-outlined {
+    margin-left: 40px;
+    background-color: rgb(217, 21, 21);
+}
+
+#id {
+    background-color: #21d78e;
+}
+
+footer p {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    
+    justify-content: left;
+    
+}
+.text {
+    font-size: 20px;
+    padding-left: 20px;
+}
+figcaption {
+    font-style: italic;
+}
