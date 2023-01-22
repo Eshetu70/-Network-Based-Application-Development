@@ -141,7 +141,7 @@ label {
     display: inline-block;
 }
 input[type=text],
-input[type=date],
+input[type=datetime-local],
 select {
     background-color: lightgrey;
     width: 80%;
