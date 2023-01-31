@@ -30,12 +30,12 @@ app.get('/student',(req, res)=>{
     res.json(student);
 });
 app.post('/student',(req,res)=>{
-    console.log(req.body);
+   console.log(req.body);
     let students = req.body;
     students.id = uuidv4();
     student.push(students);
-    res.redirect('/student');
-    //res.redirect('/about');
+    //res.redirect('/student');
+    res.redirect('/about');
 });
 app.get('/student/create', (req, res) => {
     //res.statusCode = 200;
