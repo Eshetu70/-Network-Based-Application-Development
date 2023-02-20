@@ -9,6 +9,8 @@ let port = 5800;
 let host = 'localhost';
 app.use(express.urlencoded({extended: true}));
 
+
+
 let student =[{id: 1, name:'Alice', major:'Computer Science'},
 {id: '2', name:'Brik', major:'Computer Science'},
 {id: '3', name:'Jason', major:'Computer Science'},
@@ -35,7 +37,7 @@ app.post('/student',(req,res)=>{
     students.id = uuidv4();
     student.push(students);
     //res.redirect('/student');
-    res.redirect('/about');
+    res.redirect('/contact');
 });
 app.get('/student/create', (req, res) => {
     //res.statusCode = 200;
@@ -49,6 +51,8 @@ app.get('/student/:sid',(req, res)=>{
     res.json(students);
 });
 
+// local storage
+// localStorage.setItem("Mylist", JSON.stringify(student));
 
 app.get('/about', (req, res) => {
     //res.send('/views/about.html');

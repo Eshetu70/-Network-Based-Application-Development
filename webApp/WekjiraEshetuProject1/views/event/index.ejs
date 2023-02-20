@@ -1,0 +1,15 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+   <%if(events.length){%>
+    <%events.forEach(event=>{%>
+     <h4><%= event.category %></h4>
+     <ol class="event">
+       <a href="/events/<%= event.id%>"><p><%= event.title%></p></a>
+    </ol> 
+   <%  });
+   }else{%>
+    <p>There is not events to display</p>
+  <% }%>
+</main>
+    <%- include('../partial/footer.ejs')%>
