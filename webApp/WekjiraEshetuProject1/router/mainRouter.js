@@ -4,11 +4,14 @@ const controller =require('../controllers/mainController')
 const router =express.Router();
 
 
-router.get('/',controller.index);
 
-router.get('/about',controller.about);
 
-router.get('/contact',controller.contact);
+router.get('/about',(red, res)=>{
+    res.send('send all stories')
+
+});
+
+
 
 
 module.exports =router;
