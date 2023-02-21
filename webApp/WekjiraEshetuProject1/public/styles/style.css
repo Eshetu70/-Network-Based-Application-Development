@@ -113,26 +113,31 @@ a{
 .fa-facebook {
     background-color: #3B5998;
     font-size: 22px;
-    height: 20px;
+    /* height: 20px; */
     text-align: center;
     border-radius: 50%;
     line-height: 22px;
     float: right;
+    
+    align-self: self-end;
     color: white;
     margin-right: 30px;
+    /* display: inline-block; */
+    grid-template-rows: auto 1fr auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
 
 }
 .fa-linkedin {
     float: right;
-    width: 12px;
-    height: 22px;
+    /* align-self: end; */
+    /* width: 12px;
+    height: 22px; */
     border-radius: 50%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     background: #007bb5;
-    ;
+    grid-template-rows: auto 1fr auto;
     color: white;
 }
 
@@ -183,8 +188,10 @@ input[type=submit] {
     padding: 12px;
     background-color: #0d6743;
     margin-left: 105px;
+    display: inline-block;
     width: 80%;
     color: white;
+    grid-template-rows: auto 1fr auto;
 }
 #category {
     width: 80%;

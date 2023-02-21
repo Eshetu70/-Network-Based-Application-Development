@@ -5,7 +5,10 @@ const fs =require('fs');
 const ejs = require('ejs');
 const methodOverride =require('method-override');
 const eventRouter =require('./router/eventRouter');
-//const mainRouter =require('./router/mainRouter');
+const mainRouter =require('./router/mainRouter');
+
+// const {fileUpload} = require('./middleware/fileUpload');
+// const {fileUpload}=require('./middleware/fileUpload')
 
 const app = express();
 let port =4000;
@@ -17,32 +20,25 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
-// app.use((req, res,next)=>{
-//     console.log(req.method);
-//     console.log(req.url);
-//     next;
-// })
 
-app.get('/',(req, res)=>{
-    res.render('index.ejs');
 
-});
 
-app.get('/about',(req, res)=>{
-    res.render('about.ejs');
-
-});
-app.get('/contact',(req, res)=>{
-    res.render('contact.ejs');
-
-});
-// app.get('/event',(req, res)=>{
-//     res.statusCode =200;
-//     res.send('event.html');
-
+// app.post('/events', fileUpload, (req, res, next) => {
+//     let image =  "./images/" + req.file.filename;
+//     res.render('./event/newEvent.ejs', {image});
+// });
 
 app.use('/events',eventRouter)
-//app.use('/about',mainRouter)
+
+app.use('/',mainRouter)
+
+app.use((req, res, next)=>{
+    let err = new Error('The server cannot locate'+ req.url);
+    err.status =404;
+    next(err);
+})
+
+
 app.use((err, req, res, next)=>{
     // console.log(err.stack);
      if(!err.status){

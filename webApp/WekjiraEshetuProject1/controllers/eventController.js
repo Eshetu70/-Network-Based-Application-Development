@@ -15,20 +15,23 @@ exports.new = (req, res) => {
 
 exports.create = (req, res) => {
     // res.send('created form')
-    let event = req.body;
+    let event = req.body; 
     model.save(event);
     res.redirect('/events')
+   
 
 };
 
-exports.show = (req, res) => {
+exports.show = (req, res, next) => {
 
     let id = req.params.id;
     let event = model.findById(id);
     if (event) {
         res.render('./event/event.ejs', { event });
     } else {
-        res.status(404).send('cannot find event with id ' + id)
+        let err = new Error('Cannot find a event with id '+ id);
+        err.status=404;
+        next(err);
     }
 
 
@@ -36,14 +39,16 @@ exports.show = (req, res) => {
 };
 
 //updated
-exports.edit = (req, res) => {
+exports.edit = (req, res, next) => {
     // res.send('send the edit form')
     let id = req.params.id;
     let event = model.findById(id);
     if (event) {
         res.render('./event/edit.ejs', { event });
     } else {
-        res.status(404).send('cannot find event with id ' + id);
+        let err = new Error('Cannot find a event with id '+ id);
+        err.status=404;
+        next(err);
     }
 
 
@@ -51,26 +56,31 @@ exports.edit = (req, res) => {
 
 //put
 
-exports.update = (req, res) => {
+exports.update = (req, res, next) => {
     // res.send('updated all events with id ' + req.params.id)
     let event =req.body;
     let id =req.params.id;
     if(model.updateById(id, event)){
-        res.redirect('/events')
+        res.redirect('/events/')
     }else{
-        res.status(404).send('cannot find event with id'+ id)
+        let err = new Error('Cannot find a event with id '+ id);
+        err.status=404;
+        next(err);
     }
 };
 
 //delete
-exports.delete = (req, res) => {
+exports.delete = (req, res, next) => {
     // res.send('delete all events with id ' + req.params.id)
     let id =req.params.id;
     if(model.deleteById(id)){
         res.redirect('/events')  
+       
     }   
     else{
-        res.status(404).send('cannot find event with id'+ id)
+        let err = new Error('Cannot find a event with id '+ id);
+        err.status=404;
+        next(err);
     }
        
     

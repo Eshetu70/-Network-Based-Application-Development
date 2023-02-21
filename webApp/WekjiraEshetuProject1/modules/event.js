@@ -109,6 +109,7 @@ exports.save =function(event){
 exports.updateById =function(id, newStory){
     let event =events.find(event=>event.id ===id);
     if(event){
+        event.category =newStory.category;
         event.title = newStory.title;
         event.hostName =newStory.hostName;
         event.startDateTime = newStory.startDateTime;
@@ -131,3 +132,4 @@ exports.deleteById = function(id){
         return false;
     }
 }
+
