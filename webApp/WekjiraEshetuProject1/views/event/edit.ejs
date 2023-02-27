@@ -1,23 +1,15 @@
 
 <%- include('../partial/header.ejs')%>
     <main>
-        <form method = "POST" action = "/events/<%= event.id%>?_method=PUT" class="new-form">
+        <form method = "POST"  enctype="multipart/form-data"  action = "/events/<%= event.id%>?_method=PUT" class="new-form">
         <label for="category"> Category </label> 
-            <select id="category" name="category">
-                <option value="category">--select category--</option>
-                <option value="sport">Sport</option>
-                <option value="education">Education</option>
-                <option value="voluntary">Voluntary</option>
-                <option value="cater">Catering</option>
-                <option value="lunch">School Lunch</option>
-              </select><br><br>
+        <input type="text", id ="category"  value="<%= event.category%>" name="category" required><br><br>
         <label for="title"> Title</label> 
         <input type="text" id="title" value="<%= event.title%>" name="title" required=""> <br><br>
         <label for="hostName"> Host</label> 
         <input type="text" id="hostName" value="<%= event.hostName%>" name="hostName" required=""> <br><br>
         <label for="details"> Details</label> 
         <input type="text" id="details" value="<%= event.details%>" name="details" required=""> <br><br>
-
         <label for="location"> Where</label> 
         <input type="text" id="location" value="<%= event.location%>" name="location" required=""> <br><br>
         <label for="startDateTime"> Start</label> 
@@ -25,8 +17,8 @@
         <label for="endDateTime"> End</label> 
         <input type="datetime-local" id="endDateTime" name="endDateTime" value="<%= event.endDateTime%>" require=""> <br><br>
         <label for="image">Image</label>
-        <input type="file" id="image" name="image" required=""><br><br>
-        <input type="submit" value="Submit" class="text">
+        <input type="file" id="image" name="image" value="<%= event.image%>"  required=""><br><br>
+        <input type="submit" value="Submit" class="text"><br><br>
          </form>
     </main>
     <%- include('../partial/footer.ejs')%>

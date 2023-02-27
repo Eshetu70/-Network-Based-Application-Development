@@ -8,6 +8,7 @@ const eventRouter =require('./router/eventRouter');
 const mainRouter =require('./router/mainRouter');
 
 // const {fileUpload} = require('./middleware/fileUpload');
+
 // const {fileUpload}=require('./middleware/fileUpload')
 
 const app = express();
@@ -23,10 +24,11 @@ app.use(methodOverride('_method'));
 
 
 
-// app.post('/events', fileUpload, (req, res, next) => {
+// app.post('/', fileUpload, (req, res, next) => {
 //     let image =  "./images/" + req.file.filename;
 //     res.render('./event/newEvent.ejs', {image});
 // });
+
 
 app.use('/events',eventRouter)
 
@@ -40,7 +42,7 @@ app.use((req, res, next)=>{
 
 
 app.use((err, req, res, next)=>{
-    // console.log(err.stack);
+    console.log(err.stack);
      if(!err.status){
          err.status =500;
          err.message =("Internal server error");

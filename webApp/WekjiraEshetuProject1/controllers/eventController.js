@@ -1,24 +1,26 @@
 
-const model = require('../modules/event.js');
+const model = require('../models/event.js');
+
 
 exports.index = (req, res) => {
     //res.send('send all events')
     let events = model.find();
-    res.render('./event/index.ejs', { events })
+    let categories= model.selectedCategory();
+    res.render('./event/index.ejs', { events, categories})
 };
 
 exports.new = (req, res) => {
     res.render('./event/newEvent.ejs')
 };
 
-//post
 
 exports.create = (req, res) => {
     // res.send('created form')
     let event = req.body; 
+    event.image = '/images/' + req.file.filename;
     model.save(event);
     res.redirect('/events')
-   
+     
 
 };
 
@@ -26,6 +28,7 @@ exports.show = (req, res, next) => {
 
     let id = req.params.id;
     let event = model.findById(id);
+    console.log(event)
     if (event) {
         res.render('./event/event.ejs', { event });
     } else {
@@ -33,8 +36,6 @@ exports.show = (req, res, next) => {
         err.status=404;
         next(err);
     }
-
-
     //    res.send('send all events with id ' +req.params.id)
 };
 
@@ -44,7 +45,7 @@ exports.edit = (req, res, next) => {
     let id = req.params.id;
     let event = model.findById(id);
     if (event) {
-        res.render('./event/edit.ejs', { event });
+        res.render('./event/edit.ejs', { event});
     } else {
         let err = new Error('Cannot find a event with id '+ id);
         err.status=404;
@@ -60,6 +61,8 @@ exports.update = (req, res, next) => {
     // res.send('updated all events with id ' + req.params.id)
     let event =req.body;
     let id =req.params.id;
+    event.image= '/images/'+ req.file.filename;
+    console.log(req.file.filename)
     if(model.updateById(id, event)){
         res.redirect('/events/')
     }else{

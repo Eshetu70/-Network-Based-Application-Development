@@ -1,9 +1,9 @@
 <%- include('../partial/header.ejs')%>
     <main>
-        <form action='/events'  method ='POST'>
+        <form action='/events' enctype="multipart/form-data"  method ='POST'>
         <label for="category"> Category </label> 
             <select id="category" name="category">
-                <option value="category">--select category--</option>
+                <option value="selectedCategory">--select category--</option>
                 <option value="sport">Sport</option>
                 <option value="education">Education</option>
                 <option value="voluntary">Voluntary</option>
@@ -24,10 +24,10 @@
         <label for="endDateTime"> End</label> 
         <input type="datetime-local" id="endDateTime" name="endDateTime" value="" required="" > <br><br>
         <label for="image">Image</label>
-        <input type="file" id="image" name="image" required=""><br><br>
+        <input type="file" id="image" name="image" value="image" required=""><br><br>
         <input type="submit" value="Submit" class="text"><br><br> <br>
          </form>
-         <!-- <img src="<%= typeof image !== 'undefined'? image: ''%>"> -->
+        
         
     </main>
     <%- include('../partial/footer.ejs')%>
