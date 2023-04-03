@@ -2,8 +2,17 @@
 <%- include('../partial/header.ejs')%>
     <main>
         <form method = "POST"  enctype="multipart/form-data"  action = "/events/<%= event.id%>?_method=PUT" class="new-form">
-        <label for="category"> Category </label> 
-        <input type="text", id ="category"  value="<%= event.category%>" name="category" required><br><br>
+        
+            <label for="category"> Category </label> 
+            <select id="category" name="category">
+                <option value="selecteCategory" >Select Category--</option>
+
+                <option value="Sport" <% if(event.category==='Sport') { %> selected <% } %> > Sport</option>
+                <option value="Education"<% if(event.category==='Education') { %> selected <% } %> >Education</option>
+                <option value="Voluntary"<% if(event.category==='Voluntary') { %> selected <% } %> >Voluntary</option>
+                <option value="Catering" <% if(event.category==='Catering') { %> selected <% } %> >Catering</option>
+                <option value="School Lunch" <% if(event.category==='School Lunch') { %> selected <% } %> >School Lunch</option>
+              </select><br><br>
         <label for="title"> Title</label> 
         <input type="text" id="title" value="<%= event.title%>" name="title" required=""> <br><br>
         <label for="hostName"> Host</label> 

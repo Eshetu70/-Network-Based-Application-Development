@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const ejs = require('ejs');
 
 const app = express();
-let port = 3000;
+let port = 4000;
 let host = 'localhost';
 
 app.set('view engine', 'ejs');

@@ -4,6 +4,7 @@ const morgan =require('morgan');
 const fs =require('fs');
 const ejs = require('ejs');
 const methodOverride =require('method-override');
+const mongoose =require('mongoose');
 const eventRouter =require('./router/eventRouter');
 const mainRouter =require('./router/mainRouter');
 
@@ -14,8 +15,19 @@ const mainRouter =require('./router/mainRouter');
 const app = express();
 let port =4000;
 let host ='localhost';
+let url ='mongodb+srv://eshetu:Mygrace%40%4007!@cluster0.qli7n5o.mongodb.net/nbda-project3?retryWrites=true&w=majority'
 app.set('view enjine', 'ejs');
 
+
+
+mongoose.connect(url)
+.then(()=>{
+    app.listen(port, host, ()=> {
+    console.log('The server is running at port', port);
+});
+
+})
+.catch(err=>console.log(err.message))
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
@@ -52,6 +64,3 @@ app.use((err, req, res, next)=>{
  });
 
 
-app.listen(port, host, ()=> {
-    console.log('The server is running at port', port);
-});
