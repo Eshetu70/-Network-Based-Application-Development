@@ -1,0 +1,64 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+    <h4>Welcome <%=user.firstName%>!</h4>
+    <h4>My Events</h4>
+               <table>
+                <%if(events.length){%>
+               
+                    <tr>
+                        <th id="title">Title</th>
+                        <th> Action</th>
+                    </tr>
+                    <%events.forEach(event=>{%>
+                <tr>
+                    <td> <a href ='/events/<%= event.id%>'><p> <%= event.title%></p>  </a></td>
+                    <td>
+                        <form> 
+                            <button type="submit" formmethod="GET" formaction="/events/<%= event.id%>/edit"> <img src="/images/edit.png" id="img"> </button>
+                            <button  type="submit" formmethod="POST" formaction="/events/<%= event.id%>?_method=DELETE"><img src="/images/delete.png" id="delete"></button>
+                           </form>
+                    </td>
+                </tr>
+                <%});
+            }else{%>
+                <p> You have not created any events</p>
+                <%}%>
+               </table>     
+               
+               
+
+
+               <h4>My RSVPS</h4>
+           
+               <table>
+
+
+                <%if(rsvps.length!=0){%>
+               
+                    <tr>
+                        <th id="title">Title</th>
+                        <th> Going?</th>
+                    </tr>
+                    <%rsvps.forEach(rsvp=>{%>
+                <tr>
+                    <td> <a href ='/events/<%= rsvp.eventName._id%>'><p> <%= rsvp.eventName.title%></p>  </a></td>
+                    <td>
+                        <!-- <%= rsvp.status%> -->
+                        <form> 
+                            <button id="rsvp" value="rsvp.status" name="buttonName" type="submit" formmethod="PUT" formaction="/events/<%= rsvp.eventName._id%>"> <%= rsvp.status%></button>
+                           </form>
+                    </td>
+                </tr>
+                <%});
+            }else{%>
+                <p> You have not created any rsvps</p>
+               
+                <%}%>
+               </table>       
+
+
+
+</main>
+<br>
+    <%- include('../partial/footer.ejs')%>

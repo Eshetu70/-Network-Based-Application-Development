@@ -1,0 +1,17 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+    <form action = '/users/login' method = 'POST' class="user-form">
+        <label for="email">Email Address</label></td>
+        <input type="email" id="email" name="email" placeholder="Email"  required></td>
+           
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" minlength="8" maxlength="64" placeholder="Password" required>
+           
+        <input type="submit" value="Login">     
+    </form>
+
+</main>
+    <%- include('../partial/footer.ejs')%>
+
+

@@ -1,0 +1,42 @@
+
+<%- include('../partial/header.ejs')%>
+<main>
+  <div class="container">
+    <div class="image">
+  <h4><%= event.title%></h4>
+  </div> 
+  <div class="text"></div>
+  
+  <h3> Going?</h3>
+  <!-- <%if(user == event.hostName._id){%>
+    <form> 
+      <button type="submit" formmethod="GET" formaction="/events/<%= event.id%>/edit"> <img src="/images/edit.png" id="img"> </button>
+      <button  type="submit" formmethod="POST" formaction="/events/<%= event.id%>?_method=DELETE"><img src="/images/delete.png" id="delete"></button>
+     </form>
+     <%}%> -->
+     <form> 
+       <button id="green" value="YES" name="buttonName" type="submit" formmethod="POST" formaction="/events/<%= event.id%>/rsvp">Yes</button>
+       <button id="red" value="NO" name="buttonName" type="submit" formmethod="POST" formaction="/events/<%= event.id%>/rsvp">No</button>
+       <button id="blue" value="MAYBE" name="buttonName" type="submit" formmethod="POST" formaction="/events/<%= event.id%>/rsvp">Maybe</button>
+      </form>
+     </div>
+     <br>
+    </div>
+     <div class="container">
+        <div class="image">
+          
+       <img src="<%= event.image%>" height="400" width="400">
+            </div>
+            <div class="text">
+              <p><strong>Host:</strong> <%= event.hostName.firstName + ' ' + event.hostName.lastName%></p><br>
+              <p><strong>Date and Time:</strong> <%= event.startDateTime%> - <%= event.endDateTime%></p><br>
+              <p><strong>Location:</strong> <%= event.location%></p><br>
+             <p><strong>Details</strong> <%= event.details%> </p>
+
+             <p><strong>Number of rsvps:</strong> <%= count%> </p>
+
+            </div>
+            </div>  
+  
+</main>
+<%- include('../partial/footer.ejs')%>
