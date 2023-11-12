@@ -1,6 +1,6 @@
-const model = require('../models/user');
-const Event = require('../models/event');
-const Rsvp= require('../models/rsvp');
+const model = require('../models/user.js');
+const Event = require('../models/event.js');
+const Rsvp= require('../models/rsvp.js');
 
 exports.new = (req, res)=>{
     return res.render('./user/new.ejs');
